@@ -1,0 +1,38 @@
+import { Component } from '@angular/core';
+import {AF} from "../providers/af";
+import {Router} from "@angular/router";
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
+})
+
+export class LoginComponent {
+
+  public error: any;
+
+  constructor(public afService: AF, private router: Router) {}
+
+  loginWithGoogle() {
+    this.afService.loginWithGoogle().then((data) => { this.router.navigate(['']); })
+  }
+
+  loginWithEmail(event, email, password){
+    event.preventDefault();
+    this.afService.loginWithEmail(email, password)
+      .then((data) => {
+        this.afService.email = data.auth.email;
+        this.afService.displayName = data.auth.displayName ? data.auth.displayName : 'unknown';
+        this.router.navigate(['']);
+      })
+      .catch((error: any) => {
+        if (error) {
+          this.error = error;
+          console.log(this.error);
+        }
+      });
+  }
+
+
+}
