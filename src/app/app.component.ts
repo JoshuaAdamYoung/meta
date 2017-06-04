@@ -20,11 +20,23 @@ export class AppComponent {
         }
         else {
           console.log("Successfully Logged in.");
+          if(auth.google) {
+            this.afService.displayName = auth.google.displayName;
+            this.afService.email = auth.google.email;
+          }
+          else {
+            console.log(auth.auth.email);
+            this.afService.displayName = auth.auth.email;
+            this.afService.email = auth.auth.email;
+          }
           this.isLoggedIn = true;
           this.router.navigate(['']);
         }
       }
     );
+  }
+  editProfile(){
+    this.router.navigate(['profile']);
   }
   logout() {
     this.afService.logout();

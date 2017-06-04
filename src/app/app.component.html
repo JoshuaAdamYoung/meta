@@ -1,15 +1,23 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Meta</a>
-    </div>
-    <div *ngIf="isLoggedIn" class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a (click)="logout()">Logout</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<md-sidenav-container class="example-container">
+  <md-sidenav #sidenav class="example-sidenav">
+    <button md-button [routerLink]="['']">Chat</button>
+    <button md-button [routerLink]="['profile']">Profile</button>
+    <button md-button [routerLink]="['']">Button 3</button>
+    <button md-button [routerLink]="['']">Button 4</button>
+  </md-sidenav>
+
+
+<md-toolbar color="primary">
+    <md-icon class="menu-icon" (click)="sidenav.open()">menu</md-icon>
+    <span class="example-spacer"></span>
+    <h1 class="md-title text-center brand cin">Meta</h1>
+    <span class="example-spacer"></span>
+    <md-icon class="example-icon" *ngIf="isLoggedIn" (click)="editProfile()">person</md-icon>
+    <md-icon class="example-icon" *ngIf="isLoggedIn" (click)="logout()">exit_to_app</md-icon>
+</md-toolbar>
+
 <div class="app-content">
   <router-outlet></router-outlet>
 </div>
+
+</md-sidenav-container>

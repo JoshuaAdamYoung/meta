@@ -46,6 +46,42 @@ export class AF {
      });
    }
 
+   /**
+    * Logs in the user using Twitter
+    * @returns {firebase.Promise<FirebaseAuthState>}
+    */
+
+   loginWithTwitter() {
+     return this.af.auth.login({
+       provider: AuthProviders.Twitter,
+       method: AuthMethods.Popup,
+     });
+   }
+
+   /**
+    * Logs in the user using Facebook
+    * @returns {firebase.Promise<FirebaseAuthState>}
+    */
+
+   loginWithFacebook() {
+     return this.af.auth.login({
+       provider: AuthProviders.Facebook,
+       method: AuthMethods.Popup,
+     });
+   }
+
+   /**
+    * Logs in the user using Github
+    * @returns {firebase.Promise<FirebaseAuthState>}
+    */
+
+   loginWithGithub() {
+     return this.af.auth.login({
+       provider: AuthProviders.Github,
+       method: AuthMethods.Popup,
+     });
+   }
+
   /**
    * Logs out the current user
    */

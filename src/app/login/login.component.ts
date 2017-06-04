@@ -21,9 +21,7 @@ export class LoginComponent {
   loginWithEmail(event, email, password){
     event.preventDefault();
     this.afService.loginWithEmail(email, password)
-      .then((data) => {
-        this.afService.email = data.auth.email;
-        this.afService.displayName = data.auth.displayName ? data.auth.displayName : 'unknown';
+      .then(() => {
         this.router.navigate(['']);
       })
       .catch((error: any) => {

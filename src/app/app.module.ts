@@ -8,6 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AngularFireModule } from 'angularfire2';
 import { RouterModule, Routes } from '@angular/router';
+import { MaterialModule } from '@angular/material'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 /**
 COMPONENTS
@@ -23,6 +25,8 @@ PROVIDERS
 */
 
 import { AF } from './providers/af';
+import { TodoComponent } from './todo/todo.component';
+import { ProfileComponent } from './profile/profile.component';
 
 /**
 VARIABLES
@@ -40,7 +44,8 @@ export const firebaseConfig = {
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'new-user', component: NewUserComponent}
+  { path: 'new-user', component: NewUserComponent},
+  { path: 'profile', component: ProfileComponent}
 ];
 
 /**
@@ -52,15 +57,19 @@ NgModule
     AppComponent,
     NewUserComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    TodoComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(routes),
     AngularFireModule.initializeApp(firebaseConfig),
-    FormsModule
+    FormsModule,
+    MaterialModule
   ],
   providers: [ AF ],
   bootstrap: [AppComponent]
